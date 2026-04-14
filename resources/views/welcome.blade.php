@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 
-@section('title', config('app.name', 'Iceview') . ' | Premium Automotive Window Film')
+@section('title', config('app.name', 'ICE VIEW INDONESIA') . ' | Kaca Film Nano Ceramic Premium')
 
 @section('main')
     <section id="home" class="relative overflow-hidden px-4 pb-14 pt-16 sm:px-5 lg:px-8 lg:pb-20 lg:pt-24">
@@ -9,11 +9,12 @@
 
         <div class="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-2">
             <div>
-                <p class="reveal brand-font mb-3 text-sm font-semibold uppercase text-slate-300">Premium Automotive Film</p>
+                <p class="reveal brand-font mb-3 text-sm font-semibold uppercase text-slate-300">ICE VIEW Windows Protection
+                </p>
                 <h1
                     class="reveal delay-1 brand-font mb-5 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-                    Clarity Meets
-                    <span class="text-[#00F0FF]">Performance</span>
+
+                    <span class="text-[#00F0FF]">BORN TO PROTECT</span>
                 </h1>
                 <p class="reveal delay-2 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
                     Menghadirkan teknologi Nano Ceramic untuk perlindungan kendaraan dan bangunan dari panas matahari dengan
@@ -48,13 +49,13 @@
         <div class="mx-auto max-w-7xl rounded-3xl border border-slate-600/40 bg-[#0b1222]/70 p-6 sm:p-8 lg:p-12">
             <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
                 <div>
-                    <p class="brand-font mb-2 text-sm uppercase tracking-wider text-cyan-300">Iceview Windows Protection</p>
+                    <p class="brand-font mb-2 text-sm uppercase tracking-wider text-cyan-300">Ice View Windows Protection</p>
                     <h2 class="mb-4 text-3xl font-bold text-white sm:text-4xl">Teknologi Perlindungan yang Dibangun untuk
                         Iklim Tropis</h2>
                     <p class="text-sm leading-relaxed text-slate-300 sm:text-base">
-                        Iceview adalah brand kaca film premium yang dirancang untuk membantu kabin tetap nyaman di bawah
+                        Ice View adalah brand kaca film premium yang dirancang untuk membantu kabin tetap nyaman di bawah
                         terik matahari.
-                        Dengan pendekatan material modern dan pemasangan yang presisi, Iceview menghadirkan perlindungan
+                        Dengan pendekatan material modern dan pemasangan yang presisi, Ice View menghadirkan perlindungan
                         yang terasa nyata
                         pada pemakaian harian, baik untuk kendaraan pribadi maupun armada operasional.
                     </p>
@@ -65,7 +66,7 @@
                     </p>
                 </div>
 
-                
+
                 <div class="glass-card overflow-hidden rounded-2xl p-3">
                     <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80"
                         alt="Nano ceramic illustration" class="h-full min-h-[320px] w-full rounded-xl object-cover">
@@ -110,7 +111,7 @@
                     </div>
                 </div>
 
-                
+
             </div>
         </div>
     </section>
@@ -125,36 +126,38 @@
                 <article class="glass-card rounded-2xl p-6">
                     <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
                         alt="Iceview Solar Shield" class="mb-4 h-44 w-full rounded-xl object-cover">
-                    <p class="brand-font mb-2 text-xs uppercase tracking-widest text-slate-300">Signature Series</p>
-                    <h3 class="mb-3 text-xl font-semibold text-white">Iceview Solar Shield</h3>
-                    <p class="mb-5 text-sm text-slate-300">Performa penolakan panas tinggi dengan visibilitas jernih untuk
-                        penggunaan harian premium.</p>
-                    <span class="inline-flex rounded-md bg-[#00F0FF]/20 px-3 py-1 text-xs font-semibold text-[#c6faff]">High
-                        Heat Rejection</span>
+                    {{-- <p class="brand-font mb-2 text-xs uppercase tracking-widest text-slate-300">Signature Series</p> --}}
+                    <h3 class="mb-3 text-xl font-semibold text-white">Ice View Platinum</h3>
+                    <p class="mb-5 text-sm text-slate-300">Hadir dikelas entry level produk kami, dengan teknologi nano
+                        ceramic yang memiliki tolak panas yang terbaik untuk kendaraan dan gedung dikelasnya.</p>
+                    {{-- <span class="inline-flex rounded-md bg-[#00F0FF]/20 px-3 py-1 text-xs font-semibold text-[#c6faff]">High
+                        Heat Rejection</span> --}}
                 </article>
 
                 <article class="glass-card rounded-2xl p-6">
                     <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1200&q=80"
                         alt="Iceview Ceramic Pro" class="mb-4 h-44 w-full rounded-xl object-cover">
-                    <p class="brand-font mb-2 text-xs uppercase tracking-widest text-slate-300">Elite Series</p>
-                    <h3 class="mb-3 text-xl font-semibold text-white">Iceview Ceramic Pro</h3>
-                    <p class="mb-5 text-sm text-slate-300">Teknologi nano-ceramic untuk menahan panas maksimal tanpa
-                        mengganggu sinyal elektronik kendaraan.</p>
-                    <span
+                    {{-- <p class="brand-font mb-2 text-xs uppercase tracking-widest text-slate-300">Elite Series</p> --}}
+                    <h3 class="mb-3 text-xl font-semibold text-white">Ice View Premium</h3>
+                    <p class="mb-5 text-sm text-slate-300">hadir sebagai Produk unggulan kami, dengan teknologi nano
+                        ceramic, namun memiliki tolak panas yang lebih baik dari Ice View Platinum, memberikan kenyamanan
+                        yang maksimal.</p>
+                    {{-- <span
                         class="inline-flex rounded-md bg-[#00F0FF]/20 px-3 py-1 text-xs font-semibold text-[#c6faff]">Signal
-                        Friendly</span>
+                        Friendly</span> --}}
                 </article>
 
                 <article class="glass-card rounded-2xl p-6">
                     <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80"
                         alt="Iceview Safety Guard" class="mb-4 h-44 w-full rounded-xl object-cover">
-                    <p class="brand-font mb-2 text-xs uppercase tracking-widest text-slate-300">Security Series</p>
-                    <h3 class="mb-3 text-xl font-semibold text-white">Iceview Safety Guard</h3>
-                    <p class="mb-5 text-sm text-slate-300">Lapisan tambahan untuk membantu mengurangi risiko pecahan kaca
-                        dan meningkatkan keamanan kabin.</p>
-                    <span
+                    {{-- <p class="brand-font mb-2 text-xs uppercase tracking-widest text-slate-300">Security Series</p> --}}
+                    <h3 class="mb-3 text-xl font-semibold text-white">Super Clear</h3>
+                    <p class="mb-5 text-sm text-slate-300">Hadir dalam tingkat kecerahan 20% atau bisa disebut "clear".
+                        produk kami menawarkan tolak panas yang maksimal di angka 94%, namun dengan harga yang relatif lebih
+                        hemat.</p>
+                    {{-- <span
                         class="inline-flex rounded-md bg-[#00F0FF]/20 px-3 py-1 text-xs font-semibold text-[#c6faff]">Safety
-                        Layer</span>
+                        Layer</span> --}}
                 </article>
             </div>
         </div>
@@ -170,16 +173,25 @@
             </p>
             <div class="grid gap-4 sm:grid-cols-3">
                 <div class="rounded-xl border border-slate-500/35 bg-[#111d33] p-4">
-                    <p class="brand-font text-lg font-bold text-white">Coverage</p>
-                    <p class="text-sm text-slate-300">Perubahan warna, peeling, dan cacat produksi.</p>
+                    <p class="brand-font text-lg font-bold text-white">Jaminan Kualitas & Kenyamanan</p>
+                    <p class="text-sm text-slate-300">
+                        Dengan garansi yang mencapai 5 tahun meliputi warna dan kemampuan tolak panas memberikan anda
+                        kemananan dan juga kenyamanan sebagai pilihan terbaik dikelasnya.
+                    </p>
                 </div>
                 <div class="rounded-xl border border-slate-500/35 bg-[#111d33] p-4">
-                    <p class="brand-font text-lg font-bold text-white">Validity</p>
-                    <p class="text-sm text-slate-300">Hingga 5 tahun sesuai seri produk.</p>
+                    <p class="brand-font text-lg font-bold text-white">Aktivasi E-Warranty & Keaslian</p>
+                    <p class="text-sm text-slate-300">
+                        Registrasi E-Warranty anda untuk mendapatkan perlindungan garansi terbaik selama 5 tahun dan juga
+                        untuk memastikan keaslian produk ICE VIEW yang terpasang di kendaraan anda.
+                    </p>
                 </div>
                 <div class="rounded-xl border border-slate-500/35 bg-[#111d33] p-4">
-                    <p class="brand-font text-lg font-bold text-white">Claim Flow</p>
-                    <p class="text-sm text-slate-300">Dealer visit, inspeksi, dan proses penggantian.</p>
+                    <p class="brand-font text-lg font-bold text-white">Garansi & Layanan Dealer</p>
+                    <p class="text-sm text-slate-300">
+                        Setiap produk ICE VIEW yang terpasang di dealer resmi mendapatkan garansi 5 tahun untuk jasa dan
+                        produk, hubungi dealer resmi tempat anda membeli untuk mendapatkan pelayanan garansi.
+                    </p>
                 </div>
             </div>
         </div>

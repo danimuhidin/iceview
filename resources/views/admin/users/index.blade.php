@@ -1,6 +1,6 @@
 @extends('layouts.panel')
 
-@section('title', 'Manajemen User | Iceview')
+@section('title', 'Manajemen User | Ice View Indonesia')
 
 @section('content')
     <section x-data="{

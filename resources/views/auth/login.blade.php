@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login | Iceview')
+@section('title', 'Login | Ice View Indonesia')
 
 @section('content')
     <div class="w-full max-w-md rounded-2xl border border-slate-600/40 bg-[#0b1222]/85 p-6 shadow-2xl shadow-black/40 sm:p-8"

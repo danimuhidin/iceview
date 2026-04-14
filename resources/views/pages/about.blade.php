@@ -1,23 +1,23 @@
 @extends('layouts.landing')
 
-@section('title', 'About Us | Iceview')
+@section('title', 'About Us | Ice View Indonesia')
 
 @section('main')
     <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div class="mx-auto max-w-7xl">
             <p class="brand-font mb-2 text-sm uppercase tracking-wider text-cyan-300">About Us</p>
-            <h1 class="mb-6 text-4xl font-bold text-white">Iceview Window Protection</h1>
+            <h1 class="mb-6 text-4xl font-bold text-white">ICE VIEW INDONESIA</h1>
             <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
                 <article class="glass-card rounded-2xl p-6">
-                    <h2 class="mb-3 text-xl font-semibold text-white">Tentang Iceview</h2>
+                    <h2 class="mb-3 text-xl font-semibold text-white">Tentang Ice View</h2>
                     <p class="text-sm leading-relaxed text-slate-300">
-                        Iceview adalah brand kaca film premium yang fokus menghadirkan kenyamanan berkendara di iklim
+                        Ice View adalah brand kaca film premium yang fokus menghadirkan kenyamanan berkendara di iklim
                         tropis.
                         Kami merancang produk untuk membantu mengurangi panas, menjaga interior tetap terlindungi, dan tetap
                         mempertahankan tampilan mobil yang elegan.
                     </p>
                     <p class="mt-4 text-sm leading-relaxed text-slate-300">
-                        Melalui pemasangan yang rapi dan material pilihan, Iceview berusaha memberikan hasil yang seimbang
+                        Melalui pemasangan yang rapi dan material pilihan, Ice View berusaha memberikan hasil yang seimbang
                         antara
                         performa, privasi, serta estetika modern untuk kendaraan harian maupun kebutuhan profesional.
                     </p>

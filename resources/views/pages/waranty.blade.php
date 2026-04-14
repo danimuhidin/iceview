@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 
-@section('title', 'Waranty | Iceview')
+@section('title', 'Waranty | Ice View Indonesia')
 
 @section('main')
     <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">

@@ -114,6 +114,10 @@
         $siteInfo = \App\Models\SiteInfo::query()->first();
         $brandName = $siteInfo?->brand_name ?: 'Iceview';
         $brandImage = $siteInfo?->brand_image ? asset('storage/' . $siteInfo->brand_image) : asset('iceview.png');
+        $whatsappNumber = preg_replace('/\D/', '', $siteInfo?->phone ?? '');
+        if ($whatsappNumber && str_starts_with($whatsappNumber, '0')) {
+            $whatsappNumber = '62' . substr($whatsappNumber, 1);
+        }
         $brandDescription =
             $siteInfo?->description ?:
             'Iceview menghadirkan window film premium berkarakter elegan untuk kenyamanan, performa, dan gaya otomotif modern.';
@@ -323,15 +327,28 @@
             </div>
         </footer>
 
-        <button x-show="showScrollTop" x-transition x-cloak @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-            type="button" aria-label="Scroll to top"
-            class="fixed bottom-5 right-5 z-40 rounded-full bg-[#00F0FF] p-3 text-[#0F172A] shadow-lg shadow-cyan-400/30 transition hover:scale-105 hover:brightness-110">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd"
-                    d="M10 3a1 1 0 0 1 .7.3l5 5a1 1 0 1 1-1.4 1.4L11 6.4V16a1 1 0 1 1-2 0V6.4L5.7 9.7a1 1 0 0 1-1.4-1.4l5-5A1 1 0 0 1 10 3Z"
-                    clip-rule="evenodd" />
-            </svg>
-        </button>
+        <div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
+            @if ($whatsappNumber)
+                <a href="https://wa.me/{{ $whatsappNumber }}" target="_blank" rel="noopener noreferrer"
+                    aria-label="Chat WhatsApp"
+                    class="rounded-full bg-[#25D366] p-3 text-white shadow-lg shadow-emerald-400/30 transition hover:scale-105 hover:brightness-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.4 0 0 5.4 0 12.06a11.9 11.9 0 0 0 1.66 6.05L0 24l6.09-1.59a12 12 0 0 0 5.97 1.53h.01C18.66 23.94 24 18.6 24 12.03a11.85 11.85 0 0 0-3.48-8.55ZM12.07 21.9h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.62.95.97-3.53-.24-.36a9.88 9.88 0 0 1-1.52-5.29c0-5.45 4.43-9.88 9.9-9.88 2.65 0 5.14 1.03 7.01 2.9a9.83 9.83 0 0 1 2.9 7c0 5.46-4.43 9.9-9.89 9.9Zm5.43-7.42c-.3-.15-1.77-.87-2.05-.96-.27-.1-.47-.15-.66.15-.2.3-.77.96-.95 1.16-.17.2-.35.23-.64.08-.3-.15-1.25-.46-2.39-1.47a8.95 8.95 0 0 1-1.65-2.05c-.17-.3-.02-.45.13-.6.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.53.07-.8.38-.28.3-1.06 1.04-1.06 2.54 0 1.5 1.08 2.95 1.24 3.15.15.2 2.12 3.24 5.13 4.54.72.3 1.27.48 1.7.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.01-1.41.25-.7.25-1.28.18-1.4-.08-.13-.28-.2-.58-.35Z" />
+                    </svg>
+                </a>
+            @endif
+
+            <button x-show="showScrollTop" x-transition x-cloak
+                @click="window.scrollTo({ top: 0, behavior: 'smooth' })" type="button" aria-label="Scroll to top"
+                class="rounded-full bg-[#00F0FF] p-3 text-[#0F172A] shadow-lg shadow-cyan-400/30 transition hover:scale-105 hover:brightness-110">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M10 3a1 1 0 0 1 .7.3l5 5a1 1 0 1 1-1.4 1.4L11 6.4V16a1 1 0 1 1-2 0V6.4L5.7 9.7a1 1 0 0 1-1.4-1.4l5-5A1 1 0 0 1 10 3Z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
     </div>
 
     @stack('scripts')

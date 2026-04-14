@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Dashboard | Iceview')</title>
+    <title>@yield('title', 'Dashboard | Ice View Indonesia')</title>
     <link rel="icon" href="{{ asset('iceview.svg') }}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,6 +70,12 @@
                     <a href="{{ route('admin.dashboard') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.dashboard') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Admin
                         Dashboard</a>
+                    <a href="{{ route('admin.warranties.index') }}"
+                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.warranties.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Manajemen
+                        Garansi</a>
+                    <a href="{{ route('admin.claims.index') }}"
+                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.claims.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Pending
+                        Claim</a>
                     <a href="{{ route('admin.site-info.edit') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.site-info.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Manage
                         Info</a>
@@ -83,6 +89,9 @@
                     <a href="{{ route('user.dashboard') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('user.dashboard') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">User
                         Dashboard</a>
+                    <a href="{{ route('user.warranties.index') }}"
+                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('user.warranties.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Garansi
+                        User</a>
                     <a href="{{ route('account.edit') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('account.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Kelola
                         Akun</a>
@@ -110,6 +119,12 @@
                     <a href="{{ route('admin.dashboard') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.dashboard') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Admin
                         Dashboard</a>
+                    <a href="{{ route('admin.warranties.index') }}"
+                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.warranties.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Manajemen
+                        Garansi</a>
+                    <a href="{{ route('admin.claims.index') }}"
+                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.claims.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Pending
+                        Claim</a>
                     <a href="{{ route('admin.site-info.edit') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.site-info.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Manage
                         Info</a>
@@ -123,6 +138,9 @@
                     <a href="{{ route('user.dashboard') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('user.dashboard') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">User
                         Dashboard</a>
+                    <a href="{{ route('user.warranties.index') }}"
+                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('user.warranties.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Garansi
+                        User</a>
                     <a href="{{ route('account.edit') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('account.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Kelola
                         Akun</a>

@@ -1,6 +1,6 @@
 @extends('layouts.panel')
 
-@section('title', 'Kelola Akun | Iceview')
+@section('title', 'Kelola Akun | Ice View Indonesia')
 
 @section('content')
     <section class="grid gap-6 lg:grid-cols-2">

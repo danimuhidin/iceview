@@ -1,6 +1,6 @@
 @extends('layouts.panel')
 
-@section('title', 'Manage Info | Iceview')
+@section('title', 'Manage Info | Ice View Indonesia')
 
 @push('head')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">

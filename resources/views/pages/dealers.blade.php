@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 
-@section('title', 'Dealers | Iceview')
+@section('title', 'Dealers | Ice View Indonesia')
 
 @section('main')
     <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
@@ -27,7 +27,7 @@
                         <div class="space-y-3 text-sm text-slate-300">
                             <p>
                                 <span class="block text-xs uppercase tracking-wider text-slate-500">Alamat</span>
-                                <a href="{{ $dealer['maps'] }}" target="_blank" rel="noopener noreferrer"
+                                <a href="{{ $dealer['link_maps'] }}" target="_blank" rel="noopener noreferrer"
                                     class="text-cyan-300 transition hover:text-cyan-200">
                                     {{ $dealer['address'] }}
                                 </a>

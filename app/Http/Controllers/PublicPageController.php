@@ -2,84 +2,120 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\View\View;
 
 class PublicPageController extends Controller
 {
-    private function dealersData(): array
-    {
-        return [
-            [
-                'name' => 'Iceview Experience Center',
-                'city' => 'Jakarta',
-                'address' => 'Jl. Sinar Terang No. 12, Jakarta Selatan',
-                'maps' => 'https://maps.google.com/?q=Jl.+Sinar+Terang+No.+12+Jakarta+Selatan',
-                'phone' => '081234567890',
-            ],
-            [
-                'name' => 'Iceview Auto Gallery',
-                'city' => 'Bandung',
-                'address' => 'Jl. Dago Utama No. 88, Bandung',
-                'maps' => 'https://maps.google.com/?q=Jl.+Dago+Utama+No.+88+Bandung',
-                'phone' => '081298765432',
-            ],
-            [
-                'name' => 'Iceview Certified Partner',
-                'city' => 'Surabaya',
-                'address' => 'Jl. Raya Kertajaya No. 45, Surabaya',
-                'maps' => 'https://maps.google.com/?q=Jl.+Raya+Kertajaya+No.+45+Surabaya',
-                'phone' => '081355512345',
-            ],
-            [
-                'name' => 'Iceview Partner Studio',
-                'city' => 'Yogyakarta',
-                'address' => 'Jl. Solo KM 7, Yogyakarta',
-                'maps' => 'https://maps.google.com/?q=Jl.+Solo+KM+7+Yogyakarta',
-                'phone' => '081377700888',
-            ],
-        ];
-    }
-
     private function productsData(): array
     {
         return [
             [
-                'slug' => 'iceview-solar-shield',
-                'name' => 'Iceview Solar Shield',
-                'series' => 'Signature Series',
-                'tag' => 'High Heat Rejection',
+                'slug' => 'ice-view-platinum',
+                'name' => 'Ice View Platinum',
                 'image' => 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
-                'description' => 'Performa penolakan panas tinggi dengan visibilitas jernih untuk penggunaan harian premium.',
-                'features' => [
-                    'Heat rejection hingga 65%',
-                    'UV protection sampai 99%',
-                    'Visibilitas tetap nyaman siang dan malam',
+                'description' => 'Hadir dikelas entry level produk kami, dengan teknologi nano ceramic yang memiliki tolak panas yang terbaik untuk kendaraan dan gedung dikelasnya.',
+                'sub_products' => [
+                    [
+                        'name' => 'PLATINUM 40',
+                        'image' => 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=900&q=80',
+                        'description' => 'Series Platinum dengan bahan dasar nano ceramic yang membuat sinar cahaya matahari tetap masuk sehingga pandangan anda tetap jernih namun mendapatkan proteksi yang maksimal.',
+                        'specifications' => [
+                            'Color' => 'Black 40%',
+                            'Vlt' => '35%',
+                            'IR Rejection' => '38%',
+                            'UV Rejection' => '99%',
+                            'TSER' => '40%',
+                        ],
+                    ],
+                    [
+                        'name' => 'PLATINUM 60',
+                        'image' => 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80',
+                        'description' => 'Platinum 60 di dukung dengan berbagai teknologi seperti sistem penolak panas, anti silau, anti korosi, membuat nyaman saat berkendara baik siang atau malam hari.',
+                        'specifications' => [
+                            'Color' => 'Black 60%',
+                            'Vlt' => '20%',
+                            'IR Rejection' => '57%',
+                            'UV Rejection' => '99%',
+                            'TSER' => '52%',
+                        ],
+                    ],
+                    [
+                        'name' => 'PLATINUM 80',
+                        'image' => 'https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=900&q=80',
+                        'description' => 'Dapat menolak 99% sinar UV yang masuk ke dalam mobil, mencegah proses jamur dan melindungi interior mobil anda, juga dapat mencegah penuaan pada perabot rumah tangga.',
+                        'specifications' => [
+                            'Color' => 'Black 80%',
+                            'Vlt' => '5%',
+                            'IR Rejection' => '70%',
+                            'UV Rejection' => '99%',
+                            'TSER' => '58%',
+                        ],
+                    ],
                 ],
             ],
             [
-                'slug' => 'iceview-ceramic-pro',
-                'name' => 'Iceview Ceramic Pro',
-                'series' => 'Elite Series',
-                'tag' => 'Signal Friendly',
+                'slug' => 'ice-view-premium',
+                'name' => 'Ice View Premium',
                 'image' => 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1200&q=80',
-                'description' => 'Teknologi nano-ceramic untuk menahan panas maksimal tanpa mengganggu sinyal elektronik kendaraan.',
-                'features' => [
-                    'Tidak mengganggu GPS dan e-toll',
-                    'Tingkat kejernihan tinggi',
-                    'Reduksi silau lebih stabil',
+                'description' => 'Hadir sebagai Produk unggulan kami, dengan teknologi nano ceramic, namun memiliki tolak panas yang lebih baik dari Ice View Platinum, memberikan kenyamanan yang maksimal.',
+                'sub_products' => [
+                    [
+                        'name' => 'PREMIUM 40',
+                        'image' => 'https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=900&q=80',
+                        'description' => '40% kendaaraan anda terbuat dari kaca. kemewahan warna hitam pada series premium dari kaca film Ice view membuat tampilan kendaraan anda semakin estetis,elegan, dan garang.',
+                        'specifications' => [
+                            'Color' => 'Obsidian',
+                            'Vlt' => '15%',
+                            'IR Rejection' => '88%',
+                            'UV Rejection' => '99%',
+                            'TSER' => '68%',
+                        ],
+                    ],
+                    [
+                        'name' => 'PREMIUM 60',
+                        'image' => 'https://images.unsplash.com/photo-1600661653561-629509216228?auto=format&fit=crop&w=900&q=80',
+                        'description' => 'Mengandung formula nano ceramic yang tidak mengganggu sinyal radio, ponsel, Gps, dan tidak memblokir sistem frekuensi elektromagnetik. Pada kegelapan 60% memiliki lapisan antigores sehingga membuat kaca lebih jernih dan lebih bersih jika di tangani dengan baik juga.',
+                        'specifications' => [
+                            'Color' => 'Graphite',
+                            'Vlt' => '30%',
+                            'IR Rejection' => '82%',
+                            'UV Rejection' => '99%',
+                            'TSER' => '62%',
+                        ],
+                    ],
+                    [
+                        'name' => 'PREMIUM 80',
+                        'image' => 'https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&w=900&q=80',
+                        'description' => 'IRR 94% and UVR 99% yang membuat series premium pada Iceview memiliki penolak panas tinggi yang menjaga panas matahari tidak masuk ke dalam ruangan / kabin mobil.',
+                        'specifications' => [
+                            'Color' => 'Neutral Black',
+                            'Vlt' => '45%',
+                            'IR Rejection' => '94%',
+                            'UV Rejection' => '99%',
+                            'TSER' => '56%',
+                        ],
+                    ],
                 ],
             ],
             [
-                'slug' => 'iceview-safety-guard',
-                'name' => 'Iceview Safety Guard',
-                'series' => 'Security Series',
-                'tag' => 'Safety Layer',
+                'slug' => 'super-clear',
+                'name' => 'Super Clear',
                 'image' => 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
-                'description' => 'Lapisan tambahan untuk membantu mengurangi risiko pecahan kaca dan meningkatkan keamanan kabin.',
-                'features' => [
-                    'Meminimalkan serpihan kaca',
-                    'Menambah kekuatan struktur kaca',
-                    'Cocok untuk perlindungan ekstra',
+                'description' => 'Hadir dalam tingkat kecerahan 20% atau bisa disebut "clear". produk kami menawarkan tolak panas yang maksimal di angka 94%, namun dengan harga yang relatif lebih hemat.',
+                'sub_products' => [
+                    [
+                        'name' => 'Super Clear 20%',
+                        'image' => 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80',
+                        'description' => 'Membuat kendaaraan anda terlihat lebih baru dengan kejernihan yang luar biasa membantu menjaga warna dan kecemerlaangan kaca mobil anda, melindungi area yang rentan terhadap goresan, dan Teknologi lapisan bening ice view memberikan ketahanan yang sangat baik terhadap noda, cuaca, dan abrasi, membantu mempertahankan kualitas akhir ruang pamer mobil selama bertahun-tahun.',
+                        'specifications' => [
+                            'Color' => 'Clear Blues 20%',
+                            'Vlt' => '70%',
+                            'IR Rejection' => '70%',
+                            'UV Rejection' => '98%',
+                            'TSER' => '58%',
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -110,8 +146,9 @@ class PublicPageController extends Controller
 
     public function dealers(): View
     {
+        $dealers = User::where('role', 'user')->where('is_active', 1)->get();
         return view('pages.dealers', [
-            'dealers' => $this->dealersData(),
+            'dealers' => $dealers,
         ]);
     }
 

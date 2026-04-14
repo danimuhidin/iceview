@@ -1,6 +1,6 @@
 @extends('layouts.panel')
 
-@section('title', 'User Dashboard | Iceview')
+@section('title', 'User Dashboard | Ice View Indonesia')
 
 @section('content')
     <section class="rounded-2xl border border-slate-700/60 bg-[#0b1222]/85 p-6 sm:p-8">
