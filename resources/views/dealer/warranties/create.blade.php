@@ -69,7 +69,7 @@
             <div class="rounded-xl border border-slate-700/60 bg-[#0f1a2f] p-4">
                 <div class="mb-4">
                     <h2 class="text-lg font-semibold text-white">Pilih Item Garansi</h2>
-                    <p class="text-sm text-slate-400">Centang posisi kaca lalu isi nama produk untuk masing-masing item.</p>
+                    <p class="text-sm text-slate-400">Centang posisi kaca lalu pilih produk aktif untuk masing-masing item.</p>
                 </div>
 
                 <div class="grid gap-4 md:grid-cols-2">
@@ -83,14 +83,18 @@
                             </label>
                             <div x-show="selectedPositions.includes(@js($position))" x-transition
                                 class="mt-3">
-                                <label class="mb-2 block text-xs uppercase tracking-wider text-slate-400">Nama
-                                    Produk</label>
-                                <input type="text" name="product_names[{{ $position }}]"
-                                    value="{{ old('product_names.' . $position) }}"
+                                <label class="mb-2 block text-xs uppercase tracking-wider text-slate-400">Produk</label>
+                                <select name="product_ids[{{ $position }}]"
                                     :required="selectedPositions.includes(@js($position))"
-                                    class="w-full rounded-md border border-slate-500/40 bg-[#0b1222] px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#00F0FF]"
-                                    placeholder="Contoh: Ice View Premium">
-                                @error('product_names.' . $position)
+                                    class="w-full rounded-md border border-slate-500/40 bg-[#0b1222] px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#00F0FF]">
+                                    <option value="">Pilih produk aktif</option>
+                                    @foreach ($products as $product)
+                                        <option value="{{ $product->id }}" @selected((string) old('product_ids.' . $position) === (string) $product->id)>
+                                            {{ $product->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('product_ids.' . $position)
                                     <p class="mt-2 text-xs text-red-300">{{ $message }}</p>
                                 @enderror
                             </div>

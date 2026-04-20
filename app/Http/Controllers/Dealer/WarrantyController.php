@@ -7,6 +7,7 @@ use App\Enums\WarrantyItemStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dealer\StoreWarrantyRequest;
 use App\Http\Requests\Dealer\UpdateWarrantyRequest;
+use App\Models\Product;
 use App\Models\Warranty;
 use App\Models\WarrantyItem;
 use Carbon\Carbon;
@@ -66,6 +67,7 @@ class WarrantyController extends Controller
     {
         return view('dealer.warranties.create', [
             'positions' => WarrantyItemPosition::values(),
+            'products' => Product::query()->active()->orderBy('name')->get(['id', 'name']),
         ]);
     }
 
@@ -83,17 +85,24 @@ class WarrantyController extends Controller
                 'warranty_code' => $this->generateWarrantyCode(),
             ]);
 
-            foreach ($validated['item_positions'] as $position) {
-                $productName = trim((string) ($validated['product_names'][$position] ?? ''));
+            $activeProducts = Product::query()
+                ->active()
+                ->whereIn('id', array_values((array) ($validated['product_ids'] ?? [])))
+                ->get()
+                ->keyBy('id');
 
-                if ($productName === '') {
+            foreach ($validated['item_positions'] as $position) {
+                $selectedProductId = (int) ($validated['product_ids'][$position] ?? 0);
+                $selectedProduct = $activeProducts->get($selectedProductId);
+
+                if (! $selectedProduct) {
                     continue;
                 }
 
                 WarrantyItem::create([
                     'warranty_id' => $warranty->id,
                     'item_position' => $position,
-                    'product_name' => $productName,
+                    'product_name' => $selectedProduct->name,
                     'status' => WarrantyItemStatus::Active->value,
                     'expired_at' => Carbon::now()->addYears(5),
                 ]);

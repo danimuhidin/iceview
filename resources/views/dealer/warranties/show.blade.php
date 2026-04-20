@@ -61,15 +61,41 @@
                             <td class="px-4 py-4"><span
                                     class="inline-flex rounded-full px-3 py-1 text-xs font-semibold {{ $item->status === 'Active' ? 'bg-emerald-500/20 text-emerald-200' : ($item->status === 'Pending Claim' ? 'bg-amber-500/20 text-amber-200' : 'bg-slate-600/50 text-slate-200') }}">{{ $item->status_label }}</span>
                             </td>
-                            <td class="px-4 py-4">
+                            <td class="px-4 py-4" x-data="{ claimModalOpen: false }">
                                 @if ($isClaimable)
-                                    <form action="{{ route('user.warranties.claim', $item->id) }}" method="POST"
-                                        onsubmit="return confirm('Ajukan klaim untuk item ini?')">
-                                        @csrf
-                                        <button type="submit"
-                                            class="rounded-md border border-amber-400/60 px-3 py-1.5 text-xs font-semibold text-amber-200 transition hover:bg-amber-400/10">Ajukan
-                                            Klaim</button>
-                                    </form>
+                                    <button type="button" @click="claimModalOpen = true"
+                                        class="rounded-md border border-amber-400/60 px-3 py-1.5 text-xs font-semibold text-amber-200 transition hover:bg-amber-400/10">Ajukan
+                                        Klaim</button>
+
+                                    <div x-show="claimModalOpen" x-transition.opacity x-cloak
+                                        class="fixed inset-0 z-40 bg-black/60" @click="claimModalOpen = false"></div>
+
+                                    <div x-show="claimModalOpen" x-transition x-cloak
+                                        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+                                        @keydown.escape.window="claimModalOpen = false">
+                                        <div class="w-full max-w-md rounded-2xl border border-slate-700 bg-[#0b1222] p-6 shadow-2xl shadow-black/50"
+                                            @click.stop>
+                                            <h3 class="text-lg font-bold text-white">Konfirmasi Klaim</h3>
+                                            <p class="mt-2 text-sm text-slate-300">Ajukan klaim untuk item
+                                                <span class="font-semibold text-white">{{ $item->item_position }}</span>
+                                                dengan produk
+                                                <span class="font-semibold text-white">{{ $item->product_name }}</span>?
+                                            </p>
+
+                                            <div class="mt-5 flex justify-end gap-2">
+                                                <button type="button" @click="claimModalOpen = false"
+                                                    class="rounded-md border border-slate-500/50 px-4 py-2 text-sm text-slate-200 transition hover:border-[#00F0FF] hover:text-[#00F0FF]">Batal</button>
+
+                                                <form action="{{ route('user.warranties.claim', $item->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button type="submit"
+                                                        class="rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-[#0F172A] transition hover:brightness-110">Ya,
+                                                        Ajukan</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @else
                                     <span class="text-xs text-slate-500">Tidak tersedia</span>
                                 @endif

@@ -82,6 +82,9 @@
                     <a href="{{ route('admin.users.index') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.users.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Manajemen
                         User</a>
+                    <a href="{{ route('admin.products.index') }}"
+                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.products.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Manajemen
+                        Produk</a>
                     <a href="{{ route('account.edit') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('account.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Kelola
                         Akun</a>
@@ -128,6 +131,9 @@
                     <a href="{{ route('admin.site-info.edit') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.site-info.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Manage
                         Info</a>
+                    <a href="{{ route('admin.products.index') }}"
+                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.products.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Manajemen
+                        Produk</a>
                     <a href="{{ route('admin.users.index') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('admin.users.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Manajemen
                         User</a>
@@ -139,8 +145,7 @@
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('user.dashboard') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">User
                         Dashboard</a>
                     <a href="{{ route('user.warranties.index') }}"
-                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('user.warranties.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Garansi
-                        User</a>
+                        class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('user.warranties.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}"> Kelola Garansi</a>
                     <a href="{{ route('account.edit') }}"
                         class="block rounded-md px-3 py-2 transition hover:bg-slate-800 {{ request()->routeIs('account.*') ? 'bg-slate-800 text-[#00F0FF]' : 'text-slate-300' }}">Kelola
                         Akun</a>

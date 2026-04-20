@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\WarrantyController as AdminWarrantyController;
 use App\Http\Controllers\Admin\SiteInfoController;
 use App\Http\Controllers\Admin\UserManagementController;
@@ -44,6 +45,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->as('admin.')->group(function () {
+    Route::resource('products', ProductController::class)->only(['index', 'store', 'update', 'destroy']);
     Route::get('warranties/claims', [AdminWarrantyController::class, 'claimsIndex'])->name('claims.index');
     Route::resource('warranties', AdminWarrantyController::class)->only(['index', 'show', 'edit', 'update']);
     Route::post('warranties/claims/{item_id}/approve', [AdminWarrantyController::class, 'approveClaim'])->name('warranties.claims.approve');
