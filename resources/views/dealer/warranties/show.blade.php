@@ -73,7 +73,7 @@
                                     <div x-show="claimModalOpen" x-transition x-cloak
                                         class="fixed inset-0 z-50 flex items-center justify-center p-4"
                                         @keydown.escape.window="claimModalOpen = false">
-                                        <div class="w-full max-w-md rounded-2xl border border-slate-700 bg-[#0b1222] p-6 shadow-2xl shadow-black/50"
+                                        <div class="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-700 bg-[#0b1222] p-6 shadow-2xl shadow-black/50"
                                             @click.stop>
                                             <h3 class="text-lg font-bold text-white">Konfirmasi Klaim</h3>
                                             <p class="mt-2 text-sm text-slate-300">Ajukan klaim untuk item

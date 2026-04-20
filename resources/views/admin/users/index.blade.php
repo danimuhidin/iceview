@@ -102,7 +102,7 @@
         <div x-show="createOpen" x-transition.opacity x-cloak class="fixed inset-0 z-40 bg-black/60"
             @click="createOpen = false"></div>
         <div x-show="createOpen" x-transition x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div class="w-full max-w-2xl rounded-2xl border border-slate-700 bg-[#0b1222] p-6 shadow-2xl shadow-black/50"
+            <div class="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-700 bg-[#0b1222] p-6 shadow-2xl shadow-black/50"
                 @click.stop>
                 <div class="mb-4 flex items-center justify-between">
                     <h2 class="text-lg font-bold text-white">Create User</h2>
@@ -165,7 +165,7 @@
         <div x-show="manageOpen" x-transition.opacity x-cloak class="fixed inset-0 z-40 bg-black/60"
             @click="manageOpen = false"></div>
         <div x-show="manageOpen" x-transition x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div class="w-full max-w-2xl rounded-2xl border border-slate-700 bg-[#0b1222] p-6 shadow-2xl shadow-black/50"
+            <div class="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-700 bg-[#0b1222] p-6 shadow-2xl shadow-black/50"
                 @click.stop>
                 <div class="mb-4 flex items-center justify-between">
                     <div>
@@ -236,8 +236,7 @@
                     </form>
 
                     <form method="POST" :action="`{{ url('/admin/users') }}/${selected.id}`"
-                        class="border-t border-slate-700 pt-4"
-                        data-confirm-message="Yakin ingin menghapus user ini?">
+                        class="border-t border-slate-700 pt-4" data-confirm-message="Yakin ingin menghapus user ini?">
                         @csrf
                         @method('DELETE')
                         <button type="submit" :disabled="selected.protected"
