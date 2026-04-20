@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class UserManagementController extends Controller
@@ -63,7 +64,7 @@ class UserManagementController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'role' => $validated['role'],
@@ -74,6 +75,10 @@ class UserManagementController extends Controller
             'is_active' => (bool) $validated['is_active'],
             'password' => Hash::make($validated['password']),
         ]);
+
+        if (!empty(env('RESEND_API_KEY'))) {
+            Mail::to($user->email)->send(new \App\Mail\WelcomeUserMail($user, $validated['password']));
+        }
 
         return back()->with('status', 'User baru berhasil dibuat.');
     }

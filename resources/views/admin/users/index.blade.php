@@ -237,7 +237,7 @@
 
                     <form method="POST" :action="`{{ url('/admin/users') }}/${selected.id}`"
                         class="border-t border-slate-700 pt-4"
-                        onsubmit="return confirm('Yakin ingin menghapus user ini?')">
+                        data-confirm-message="Yakin ingin menghapus user ini?">
                         @csrf
                         @method('DELETE')
                         <button type="submit" :disabled="selected.protected"

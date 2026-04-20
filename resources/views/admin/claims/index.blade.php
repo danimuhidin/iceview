@@ -37,7 +37,7 @@
                             <td class="px-4 py-4">{{ $item->product_name }}</td>
                             <td class="px-4 py-4">
                                 <form action="{{ route('admin.warranties.claims.approve', $item->id) }}" method="POST"
-                                    onsubmit="return confirm('Setujui klaim item ini?')">
+                                    data-confirm-message="Setujui klaim item ini?">
                                     @csrf
                                     <button type="submit"
                                         class="rounded-md bg-[#00F0FF] px-3 py-1.5 text-xs font-semibold text-[#0F172A] transition hover:brightness-110">Approve</button>

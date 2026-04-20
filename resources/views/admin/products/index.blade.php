@@ -151,7 +151,7 @@
                     </form>
 
                     <form method="POST" :action="`{{ url('/admin/products') }}/${selected.id}`"
-                        onsubmit="return confirm('Yakin ingin menghapus produk ini?')"
+                        data-confirm-message="Yakin ingin menghapus produk ini?"
                         class="border-t border-slate-700 pt-4">
                         @csrf
                         @method('DELETE')

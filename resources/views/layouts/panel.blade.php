@@ -163,7 +163,94 @@
         </main>
     </div>
 
+    <div id="confirm-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4" aria-hidden="true">
+        <div id="confirm-modal-backdrop" class="absolute inset-0 bg-black/70"></div>
+        <div class="relative z-10 w-full max-w-md rounded-2xl border border-slate-700 bg-[#0b1222] p-6 shadow-2xl shadow-black/60">
+            <h3 id="confirm-modal-title" class="text-lg font-bold text-white">Konfirmasi Aksi</h3>
+            <p id="confirm-modal-message" class="mt-2 text-sm text-slate-300">Apakah Anda yakin ingin melanjutkan?</p>
+
+            <div class="mt-5 flex justify-end gap-2">
+                <button id="confirm-modal-cancel" type="button"
+                    class="rounded-md border border-slate-500/50 px-4 py-2 text-sm text-slate-200 transition hover:border-[#00F0FF] hover:text-[#00F0FF]">Batal</button>
+                <button id="confirm-modal-submit" type="button"
+                    class="rounded-md bg-[#00F0FF] px-4 py-2 text-sm font-semibold text-[#0F172A] transition hover:brightness-110">Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+
     @stack('scripts')
+
+    <script>
+        (() => {
+            const modal = document.getElementById('confirm-modal');
+
+            if (!modal) {
+                return;
+            }
+
+            const backdrop = document.getElementById('confirm-modal-backdrop');
+            const messageEl = document.getElementById('confirm-modal-message');
+            const cancelButton = document.getElementById('confirm-modal-cancel');
+            const submitButton = document.getElementById('confirm-modal-submit');
+
+            let pendingForm = null;
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                modal.setAttribute('aria-hidden', 'true');
+                pendingForm = null;
+            };
+
+            const openModal = (form, message) => {
+                pendingForm = form;
+                messageEl.textContent = message || 'Apakah Anda yakin ingin melanjutkan?';
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                modal.setAttribute('aria-hidden', 'false');
+            };
+
+            document.addEventListener('submit', (event) => {
+                const form = event.target;
+
+                if (!(form instanceof HTMLFormElement)) {
+                    return;
+                }
+
+                if (!form.hasAttribute('data-confirm-message')) {
+                    return;
+                }
+
+                if (form.dataset.confirmed === 'true') {
+                    form.dataset.confirmed = 'false';
+                    return;
+                }
+
+                event.preventDefault();
+                openModal(form, form.getAttribute('data-confirm-message'));
+            });
+
+            submitButton?.addEventListener('click', () => {
+                if (!pendingForm) {
+                    closeModal();
+                    return;
+                }
+
+                pendingForm.dataset.confirmed = 'true';
+                pendingForm.requestSubmit();
+                closeModal();
+            });
+
+            cancelButton?.addEventListener('click', closeModal);
+            backdrop?.addEventListener('click', closeModal);
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>

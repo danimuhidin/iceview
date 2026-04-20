@@ -9,6 +9,7 @@ use App\Models\Warranty;
 use App\Models\WarrantyItem;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class WarrantyController extends Controller
@@ -83,6 +84,18 @@ class WarrantyController extends Controller
 
         $item->status = WarrantyItemStatus::Claimed->value;
         $item->save();
+
+        if (!empty(env('RESEND_API_KEY'))) {
+            // To Dealer
+            if ($item->warranty->dealer && $item->warranty->dealer->email) {
+                Mail::to($item->warranty->dealer->email)->send(new \App\Mail\WarrantyClaimApprovedDealerMail($item));
+            }
+
+            // To Customer
+            if ($item->warranty->customer_email) {
+                Mail::to($item->warranty->customer_email)->send(new \App\Mail\WarrantyClaimApprovedCustomerMail($item));
+            }
+        }
 
         return back()->with('status', 'Klaim berhasil disetujui.');
     }

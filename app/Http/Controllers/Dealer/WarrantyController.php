@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -75,7 +76,7 @@ class WarrantyController extends Controller
     {
         $validated = $request->validated();
 
-        DB::transaction(function () use ($request, $validated): void {
+        $warranty = DB::transaction(function () use ($request, $validated) {
             $warranty = Warranty::create([
                 'dealer_id' => $request->user()->id,
                 'customer_name' => $validated['customer_name'],
@@ -107,7 +108,23 @@ class WarrantyController extends Controller
                     'expired_at' => Carbon::now()->addYears(5),
                 ]);
             }
+
+            return $warranty;
         });
+
+        if (!empty(env('RESEND_API_KEY'))) {
+            // Send to Dealer
+            Mail::to($request->user()->email)->send(new \App\Mail\WarrantyCreatedDealerMail($warranty));
+
+            // Send to Customer
+            Mail::to($warranty->customer_email)->send(new \App\Mail\WarrantyCreatedCustomerMail($warranty));
+
+            // Send to Admins (Admin role except user ID 1)
+            $admins = \App\Models\User::where('role', 'admin')->where('id', '!=', 1)->get();
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new \App\Mail\WarrantyCreatedAdminMail($warranty));
+            }
+        }
 
         return redirect()->route('user.warranties.index')->with('status', 'Garansi berhasil dibuat.');
     }
@@ -148,6 +165,13 @@ class WarrantyController extends Controller
 
         $item->status = WarrantyItemStatus::PendingClaim->value;
         $item->save();
+
+        if (!empty(env('RESEND_API_KEY'))) {
+            $admins = \App\Models\User::where('role', 'admin')->where('id', '!=', 1)->get();
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new \App\Mail\WarrantyClaimedAdminMail($item));
+            }
+        }
 
         return back()->with('status', 'Klaim item berhasil diajukan.');
     }
