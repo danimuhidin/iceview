@@ -44,7 +44,7 @@
                         readonly>
                 </div>
                 <div>
-                    <label class="mb-2 block text-sm text-slate-200">Nomor Mesin</label>
+                    <label class="mb-2 block text-sm text-slate-200">Nomor Rangka</label>
                     <input type="text" value="{{ $warranty->engine_number }}"
                         class="w-full rounded-md border border-slate-500/40 bg-[#0f1a2f] px-3 py-2 text-sm text-slate-400 outline-none"
                         readonly>

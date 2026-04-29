@@ -1,14 +1,12 @@
 <x-mail::message>
-    # Garansi Baru Terdaftar
+# Garansi Baru Terdaftar
 
-    Sebuah garansi baru telah didaftarkan oleh dealer.
+Sebuah garansi baru telah didaftarkan oleh dealer.
 
-    **Nama Pelanggan:** {{ $warranty->customer_name }}
-    **Tipe Mobil:** {{ $warranty->car_type }}
-    **Nomor Polisi:** {{ $warranty->license_plate_number ?? '-' }}
-    **Nomor Mesin:** {{ $warranty->engine_number }}
-    **Tanggal Pendaftaran:** {{ $warranty->created_at->format('d M Y') }}
-
-    Terima kasih,<br>
-    {{ config('app.name') }}
+**Nama Pelanggan:** {{ $warranty->customer_name }}
+**Tipe Mobil:** {{ $warranty->car_type }}
+**Nomor Polisi:** {{ $warranty->license_plate_number ?? '-' }}
+**Nomor Rangka:** {{ $warranty->engine_number }}
+Terima kasih,
+{{ config('app.name') }}
 </x-mail::message>

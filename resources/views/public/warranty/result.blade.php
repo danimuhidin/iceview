@@ -20,7 +20,7 @@
 
                 <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <div class="rounded-2xl border border-slate-700/60 bg-[#0f1a2f] p-4">
-                        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Nomor Mesin</p>
+                        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Nomor Rangka</p>
                         <p class="mt-2 text-lg font-semibold text-white">{{ $engineNumber }}</p>
                     </div>
                     <div class="rounded-2xl border border-slate-700/60 bg-[#0f1a2f] p-4">

@@ -1,17 +1,15 @@
 <x-mail::message>
-    # Klaim Garansi Disetujui
+# Klaim Garansi Disetujui
 
-    Sebuah klaim garansi telah disetujui.
+Sebuah klaim garansi telah disetujui.
 
-    **Tipe Mobil:** {{ $warrantyItem->warranty->car_type }}
-    **Nomor Polisi:** {{ $warrantyItem->warranty->license_plate_number ?? '-' }}
-    **Mesin:** {{ $warrantyItem->warranty->engine_number }}
-    **Nama Item:** {{ $warrantyItem->item_name }}
-
+**Tipe Mobil:** {{ $warrantyItem->warranty->car_type }}
+**Nomor Polisi:** {{ $warrantyItem->warranty->license_plate_number ?? '-' }}
+**Nomor Rangka:** {{ $warrantyItem->warranty->engine_number }}
     <x-mail::button :url="url(config('app.url') . '/user/warranties/' . $warrantyItem->warranty->id)">
         Lihat Detail
     </x-mail::button>
 
-    Terima kasih,<br>
-    {{ config('app.name') }}
+Terima kasih,
+{{ config('app.name') }}
 </x-mail::message>

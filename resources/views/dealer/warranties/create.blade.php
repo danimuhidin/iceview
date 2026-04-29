@@ -56,7 +56,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label class="mb-2 block text-sm text-slate-200">Nomor Mesin</label>
+                    <label class="mb-2 block text-sm text-slate-200">Nomor Rangka</label>
                     <input type="text" name="engine_number" value="{{ old('engine_number') }}"
                         class="w-full rounded-md border border-slate-500/40 bg-[#111d33] px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#00F0FF]"
                         required>

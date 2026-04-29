@@ -35,7 +35,7 @@
                         <th class="px-4 py-3 text-left font-semibold">Kode Garansi</th>
                         <th class="px-4 py-3 text-left font-semibold">User</th>
                         <th class="px-4 py-3 text-left font-semibold">Customer</th>
-                        <th class="px-4 py-3 text-left font-semibold">No Mesin</th>
+                        <th class="px-4 py-3 text-left font-semibold">No Rangka</th>
                         <th class="px-4 py-3 text-left font-semibold">Nopol</th>
                         <th class="px-4 py-3 text-left font-semibold">Item</th>
                         <th class="px-4 py-3 text-left font-semibold">Aksi</th>
