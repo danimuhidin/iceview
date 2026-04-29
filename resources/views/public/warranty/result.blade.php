@@ -107,6 +107,22 @@
                     </div>
                 </div>
             @endforeach
+
+            <div class="glass-card reveal rounded-3xl p-6 sm:p-8 text-slate-300 mt-8">
+                <h3 class="text-xl font-bold text-white mb-4">Syarat & Ketentuan Garansi</h3>
+                <p class="mb-2 font-semibold">Garansi Tidak Berlaku dan Batal Apabila:</p>
+                <ul class="list-disc pl-5 space-y-1 mb-4">
+                    <li>Pemasangan Bukan Dilakukan oleh Cabang Resmi ICEVIEW INDONESIA.</li>
+                    <li>Pembeli Tidak Melakukan Perawatan Sesuai Dengan Petunjuk yang diberikan.</li>
+                    <li>Kaca Film Rusak Akibat Kelalaian Pembeli, Bencana Alam, Kebakaran & Kecelakaan.</li>
+                    <li>Kartu Garansi Di Pindahtangankan.</li>
+                    <li>Terjadi Rangkap Dua (Double) Terhadap Kaca Film Apapun.</li>
+                </ul>
+                <p class="text-sm bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
+                    <strong class="text-[#00F0FF]">Catatan Penting:</strong> Penggantian Klaim Kaca Film Di Atas 1 (Satu)
+                    Tahun Akan Dikenakan Biaya Pemasangan.
+                </p>
+            </div>
         </div>
     </section>
 @endsection
