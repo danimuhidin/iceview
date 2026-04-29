@@ -122,14 +122,17 @@ class WarrantyController extends Controller
         if (! empty(env('RESEND_API_KEY'))) {
             // Send to Dealer
             Mail::to($request->user()->email)->send(new WarrantyCreatedDealerMail($warranty));
+            sleep(1);
 
             // Send to Customer
             Mail::to($warranty->customer_email)->send(new WarrantyCreatedCustomerMail($warranty));
+            sleep(1);
 
             // Send to Admins (Admin role except user ID 1)
             $admins = User::where('role', 'admin')->where('id', '!=', 1)->get();
             foreach ($admins as $admin) {
                 Mail::to($admin->email)->send(new WarrantyCreatedAdminMail($warranty));
+                sleep(1);
             }
         }
 
@@ -177,6 +180,7 @@ class WarrantyController extends Controller
             $admins = User::where('role', 'admin')->where('id', '!=', 1)->get();
             foreach ($admins as $admin) {
                 Mail::to($admin->email)->send(new WarrantyClaimedAdminMail($item));
+                sleep(1);
             }
         }
 
