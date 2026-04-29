@@ -4,6 +4,7 @@
     Klaim garansi Anda telah disetujui.
 
     **Tipe Mobil:** {{ $warrantyItem->warranty->car_type }}
+    **Nomor Polisi:** {{ $warrantyItem->warranty->license_plate_number ?? '-' }}
     **Mesin:** {{ $warrantyItem->warranty->engine_number }}
     **Nama Item:** {{ $warrantyItem->item_name }}
 

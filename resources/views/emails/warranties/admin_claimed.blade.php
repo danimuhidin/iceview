@@ -4,6 +4,7 @@
     Sebuah pengajuan klaim garansi baru telah diajukan oleh dealer.
 
     **Tipe Mobil:** {{ $warrantyItem->warranty->car_type }}
+    **Nomor Polisi:** {{ $warrantyItem->warranty->license_plate_number ?? '-' }}
     **Nomor Mesin:** {{ $warrantyItem->warranty->engine_number }}
     **Nama Item:** {{ $warrantyItem->product_name }}
 

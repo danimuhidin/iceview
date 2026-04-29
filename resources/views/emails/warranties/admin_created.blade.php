@@ -5,6 +5,7 @@
 
     **Nama Pelanggan:** {{ $warranty->customer_name }}
     **Tipe Mobil:** {{ $warranty->car_type }}
+    **Nomor Polisi:** {{ $warranty->license_plate_number ?? '-' }}
     **Nomor Mesin:** {{ $warranty->engine_number }}
     **Tanggal Pendaftaran:** {{ $warranty->created_at->format('d M Y') }}
 
