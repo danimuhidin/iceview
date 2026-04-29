@@ -29,7 +29,7 @@ class WarrantyCreatedAdminMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Warranty Registered',
+            subject: 'Garansi Baru Terdaftar',
         );
     }
 

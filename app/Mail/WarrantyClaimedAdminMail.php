@@ -28,7 +28,7 @@ class WarrantyClaimedAdminMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Warranty Claimed Admin Mail',
+            subject: 'Pengajuan Klaim Garansi Baru',
         );
     }
 

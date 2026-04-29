@@ -29,7 +29,7 @@ class WarrantyCreatedCustomerMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Your Warranty has been Registered',
+            subject: 'Garansi Anda Telah Terdaftar',
         );
     }
 

@@ -1,16 +1,16 @@
 <x-mail::message>
-    # Warranty Claim Request
+    # Pengajuan Klaim Garansi
 
-    A new warranty claim has been requested by a dealer.
+    Sebuah pengajuan klaim garansi baru telah diajukan oleh dealer.
 
-    **Car Type:** {{ $warrantyItem->warranty->car_type }}
-    **Engine Number:** {{ $warrantyItem->warranty->engine_number }}
-    **Item Name:** {{ $warrantyItem->product_name }}
+    **Tipe Mobil:** {{ $warrantyItem->warranty->car_type }}
+    **Nomor Mesin:** {{ $warrantyItem->warranty->engine_number }}
+    **Nama Item:** {{ $warrantyItem->product_name }}
 
     <x-mail::button :url="url(config('app.url') . '/admin/warranties?search=' . $warrantyItem->warranty->warranty_code)">
-        Review Claim
+        Tinjau Klaim
     </x-mail::button>
 
-    Thanks,<br>
+    Terima kasih,<br>
     {{ config('app.name') }}
 </x-mail::message>

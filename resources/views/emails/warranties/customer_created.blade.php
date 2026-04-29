@@ -1,18 +1,18 @@
 <x-mail::message>
-    # Your Warranty has been Registered
+    # Garansi Anda Telah Terdaftar
 
-    Hello {{ $warranty->customer_name }},
+    Halo {{ $warranty->customer_name }},
 
-    Your warranty registration is complete. Here are your details:
+    Pendaftaran garansi Anda telah berhasil. Berikut adalah detail garansi Anda:
 
-    **Car Type:** {{ $warranty->car_type }}
-    **Engine Number:** {{ $warranty->engine_number }}
-    **Registration Date:** {{ $warranty->created_at->format('M d, Y') }}
+    **Tipe Mobil:** {{ $warranty->car_type }}
+    **Nomor Mesin:** {{ $warranty->engine_number }}
+    **Tanggal Pendaftaran:** {{ $warranty->created_at->format('d M Y') }}
 
     <x-mail::button :url="url(config('app.url') . '/warranties/' . $warranty->warranty_code)">
-        View Your Warranty
+        Lihat Garansi Anda
     </x-mail::button>
 
-    Thanks,<br>
+    Terima kasih,<br>
     {{ config('app.name') }}
 </x-mail::message>

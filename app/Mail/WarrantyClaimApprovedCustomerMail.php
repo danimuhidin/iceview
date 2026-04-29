@@ -31,7 +31,7 @@ class WarrantyClaimApprovedCustomerMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Warranty Claim Approved Customer Mail',
+            subject: 'Klaim Garansi Disetujui',
         );
     }
 
