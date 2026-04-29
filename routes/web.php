@@ -19,6 +19,7 @@ Route::get('/products/{slug}', [PublicPageController::class, 'productDetail'])->
 Route::get('/dealers', [PublicPageController::class, 'dealers'])->name('dealers');
 Route::get('/waranty', [WarrantyCheckController::class, 'index'])->name('waranty');
 Route::post('/warranty/check', [WarrantyCheckController::class, 'check'])->name('warranty.check.process');
+Route::get('/warranties/{warranty_code}', [WarrantyCheckController::class, 'show'])->name('warranty.show');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

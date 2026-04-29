@@ -1,16 +1,16 @@
 <x-mail::message>
-    # Hello, {{ $user->name }}!
+    # Halo, {{ $user->name }}!
 
-    Welcome to {{ config('app.name') }}. Your account has been successfully created.
+    Selamat datang di {{ config('app.name') }}. Akun Anda telah berhasil dibuat.
 
-    Here are your login credentials:
+    Berikut adalah detail login Anda:
     **Email:** {{ $user->email }}
-    **Password:** {{ $password }}
+    **Kata Sandi:** {{ $password }}
 
     <x-mail::button :url="config('app.url')">
-        Visit {{ config('app.name') }}
+        Kunjungi {{ config('app.name') }}
     </x-mail::button>
 
-    Thanks,<br>
+    Terima kasih,<br>
     {{ config('app.name') }}
 </x-mail::message>

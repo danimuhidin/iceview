@@ -31,10 +31,23 @@ class WarrantyCheckController extends Controller
             ])->withInput();
         }
 
+        return redirect()->route('warranty.show', ['warranty_code' => $warranty->warranty_code]);
+    }
+
+    public function show(string $warranty_code): View|RedirectResponse
+    {
+        $warranty = Warranty::query()->whereRaw('UPPER(warranty_code) = ?', [strtoupper($warranty_code)])->first();
+
+        if (! $warranty) {
+            return redirect()->route('waranty')->withErrors([
+                'search' => 'Data garansi tidak ditemukan.',
+            ]);
+        }
+
         $engineNumber = $warranty->engine_number;
 
         return view('public.warranty.result', [
-            'search' => $search,
+            'search' => $warranty_code,
             'engineNumber' => $engineNumber,
             'primaryWarranty' => $warranty->load(['dealer', 'items']),
             'warranties' => Warranty::query()

@@ -55,7 +55,7 @@ class WarrantyController extends Controller
 
     private function loadWarrantyForDealer(Warranty $warranty, Request $request): Warranty
     {
-        abort_unless($warranty->dealer_id === $request->user()?->id, 403);
+        abort_unless($warranty->dealer_id == $request->user()?->id, 403);
 
         return $warranty->load(['dealer', 'items']);
     }
@@ -167,7 +167,7 @@ class WarrantyController extends Controller
     {
         $item = WarrantyItem::query()->with('warranty')->findOrFail($item_id);
 
-        abort_unless($item->warranty?->dealer_id === $request->user()->id, 403);
+        abort_unless($item->warranty?->dealer_id == $request->user()->id, 403);
 
         if ($item->status !== WarrantyItemStatus::Active->value || $item->expired_at->isPast()) {
             return back()->with('status', 'Item tidak dapat diajukan klaim.');
