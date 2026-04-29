@@ -64,12 +64,21 @@
                         <p class="mt-2 text-xs text-red-300">{{ $message }}</p>
                     @enderror
                 </div>
+                <div>
+                    <label class="mb-2 block text-sm text-slate-200">Nomor Polisi</label>
+                    <input type="text" name="license_plate_number" value="{{ old('license_plate_number') }}"
+                        class="w-full rounded-md border border-slate-500/40 bg-[#111d33] px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#00F0FF]">
+                    @error('license_plate_number')
+                        <p class="mt-2 text-xs text-red-300">{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
 
             <div class="rounded-xl border border-slate-700/60 bg-[#0f1a2f] p-4">
                 <div class="mb-4">
                     <h2 class="text-lg font-semibold text-white">Pilih Item Garansi</h2>
-                    <p class="text-sm text-slate-400">Centang posisi kaca lalu pilih produk aktif untuk masing-masing item.</p>
+                    <p class="text-sm text-slate-400">Centang posisi kaca lalu pilih produk aktif untuk masing-masing item.
+                    </p>
                 </div>
 
                 <div class="grid gap-4 md:grid-cols-2">

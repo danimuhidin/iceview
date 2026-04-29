@@ -7,7 +7,7 @@
         <div class="mb-6">
             <p class="brand-font mb-1 text-sm uppercase tracking-wider text-[#00F0FF]">User Feature</p>
             <h1 class="text-2xl font-bold text-white">Edit Garansi</h1>
-            <p class="mt-1 text-sm text-slate-300">Hanya nama customer dan email yang dapat diubah oleh user.</p>
+            <p class="mt-1 text-sm text-slate-300">Data berikut dapat diubah oleh user.</p>
         </div>
 
         <form method="POST" action="{{ route('user.warranties.update', $warranty) }}" class="space-y-6">
@@ -27,6 +27,15 @@
                         value="{{ old('customer_email', $warranty->customer_email) }}"
                         class="w-full rounded-md border border-slate-500/40 bg-[#111d33] px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#00F0FF]"
                         required>
+                </div>
+                <div>
+                    <label class="mb-2 block text-sm text-slate-200">Nomor Polisi</label>
+                    <input type="text" name="license_plate_number"
+                        value="{{ old('license_plate_number', $warranty->license_plate_number) }}"
+                        class="w-full rounded-md border border-slate-500/40 bg-[#111d33] px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#00F0FF]">
+                    @error('license_plate_number')
+                        <p class="mt-2 text-xs text-red-300">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label class="mb-2 block text-sm text-slate-200">Tipe Mobil</label>

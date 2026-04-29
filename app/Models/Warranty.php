@@ -18,6 +18,7 @@ class Warranty extends Model
         'customer_email',
         'car_type',
         'engine_number',
+        'license_plate_number',
         'warranty_code',
     ];
 

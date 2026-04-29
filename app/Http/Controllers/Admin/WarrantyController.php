@@ -24,7 +24,8 @@ class WarrantyController extends Controller
                     $subQuery->where('customer_name', 'like', "%{$search}%")
                         ->orWhere('customer_email', 'like', "%{$search}%")
                         ->orWhere('warranty_code', 'like', "%{$search}%")
-                        ->orWhere('engine_number', 'like', "%{$search}%");
+                        ->orWhere('engine_number', 'like', "%{$search}%")
+                        ->orWhere('license_plate_number', 'like', "%{$search}%");
                 });
             })
             ->with(['dealer', 'items'])

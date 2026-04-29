@@ -20,7 +20,7 @@
         <form method="GET" action="{{ route('user.warranties.index') }}"
             class="mb-5 grid gap-3 rounded-xl border border-slate-700/60 bg-[#0f1a2f] p-4 md:grid-cols-[1fr_auto]">
             <input type="text" name="search" value="{{ $search }}"
-                placeholder="Cari customer, kode, atau nomor mesin..."
+                placeholder="Cari customer, kode, nomor mesin, pol..."
                 class="w-full rounded-md border border-slate-500/40 bg-[#111d33] px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#00F0FF]">
             <div class="flex gap-2">
                 <button type="submit"
@@ -38,6 +38,7 @@
                         <th class="px-4 py-3 text-left font-semibold">Customer</th>
                         <th class="px-4 py-3 text-left font-semibold">Tipe Mobil</th>
                         <th class="px-4 py-3 text-left font-semibold">No Mesin</th>
+                        <th class="px-4 py-3 text-left font-semibold">Nopol</th>
                         <th class="px-4 py-3 text-left font-semibold">Item</th>
                         <th class="px-4 py-3 text-left font-semibold">Aksi</th>
                     </tr>
@@ -51,6 +52,7 @@
                             </td>
                             <td class="px-4 py-4">{{ $warranty->car_type }}</td>
                             <td class="px-4 py-4">{{ $warranty->engine_number }}</td>
+                            <td class="px-4 py-4">{{ $warranty->license_plate_number ?: '-' }}</td>
                             <td class="px-4 py-4">{{ $warranty->items_count }}</td>
                             <td class="px-4 py-4">
                                 <div class="flex flex-wrap gap-2">

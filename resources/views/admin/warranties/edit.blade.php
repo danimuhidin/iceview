@@ -40,6 +40,12 @@
                         class="w-full rounded-md border border-slate-500/40 bg-[#111d33] px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#00F0FF]"
                         required>
                 </div>
+                <div>
+                    <label class="mb-2 block text-sm text-slate-200">Nomor Polisi</label>
+                    <input type="text" name="license_plate_number"
+                        value="{{ old('license_plate_number', $warranty->license_plate_number) }}"
+                        class="w-full rounded-md border border-slate-500/40 bg-[#111d33] px-3 py-2 text-sm text-slate-100 outline-none focus:border-[#00F0FF]">
+                </div>
             </div>
 
             <div class="flex flex-wrap gap-3">

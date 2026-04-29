@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             <div class="rounded-2xl border border-slate-700/60 bg-[#0f1a2f] p-4">
                 <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Customer</p>
                 <p class="mt-2 text-lg font-semibold text-white">{{ $warranty->customer_name }}</p>
@@ -31,6 +31,10 @@
             <div class="rounded-2xl border border-slate-700/60 bg-[#0f1a2f] p-4">
                 <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Nomor Mesin</p>
                 <p class="mt-2 text-lg font-semibold text-white">{{ $warranty->engine_number }}</p>
+            </div>
+            <div class="rounded-2xl border border-slate-700/60 bg-[#0f1a2f] p-4">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Nomor Polisi</p>
+                <p class="mt-2 text-lg font-semibold text-white">{{ $warranty->license_plate_number ?: '-' }}</p>
             </div>
             <div class="rounded-2xl border border-slate-700/60 bg-[#0f1a2f] p-4">
                 <p class="text-xs uppercase tracking-[0.2em] text-slate-400">User</p>

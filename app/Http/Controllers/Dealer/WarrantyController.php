@@ -7,7 +7,12 @@ use App\Enums\WarrantyItemStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dealer\StoreWarrantyRequest;
 use App\Http\Requests\Dealer\UpdateWarrantyRequest;
+use App\Mail\WarrantyClaimedAdminMail;
+use App\Mail\WarrantyCreatedAdminMail;
+use App\Mail\WarrantyCreatedCustomerMail;
+use App\Mail\WarrantyCreatedDealerMail;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\Warranty;
 use App\Models\WarrantyItem;
 use Carbon\Carbon;
@@ -31,7 +36,8 @@ class WarrantyController extends Controller
                     $subQuery->where('customer_name', 'like', "%{$search}%")
                         ->orWhere('customer_email', 'like', "%{$search}%")
                         ->orWhere('warranty_code', 'like', "%{$search}%")
-                        ->orWhere('engine_number', 'like', "%{$search}%");
+                        ->orWhere('engine_number', 'like', "%{$search}%")
+                        ->orWhere('license_plate_number', 'like', "%{$search}%");
                 });
             })
             ->withCount('items')
@@ -83,6 +89,7 @@ class WarrantyController extends Controller
                 'customer_email' => $validated['customer_email'],
                 'car_type' => $validated['car_type'],
                 'engine_number' => $validated['engine_number'],
+                'license_plate_number' => $validated['license_plate_number'] ?? null,
                 'warranty_code' => $this->generateWarrantyCode(),
             ]);
 
@@ -112,17 +119,17 @@ class WarrantyController extends Controller
             return $warranty;
         });
 
-        if (!empty(env('RESEND_API_KEY'))) {
+        if (! empty(env('RESEND_API_KEY'))) {
             // Send to Dealer
-            Mail::to($request->user()->email)->send(new \App\Mail\WarrantyCreatedDealerMail($warranty));
+            Mail::to($request->user()->email)->send(new WarrantyCreatedDealerMail($warranty));
 
             // Send to Customer
-            Mail::to($warranty->customer_email)->send(new \App\Mail\WarrantyCreatedCustomerMail($warranty));
+            Mail::to($warranty->customer_email)->send(new WarrantyCreatedCustomerMail($warranty));
 
             // Send to Admins (Admin role except user ID 1)
-            $admins = \App\Models\User::where('role', 'admin')->where('id', '!=', 1)->get();
+            $admins = User::where('role', 'admin')->where('id', '!=', 1)->get();
             foreach ($admins as $admin) {
-                Mail::to($admin->email)->send(new \App\Mail\WarrantyCreatedAdminMail($warranty));
+                Mail::to($admin->email)->send(new WarrantyCreatedAdminMail($warranty));
             }
         }
 
@@ -147,7 +154,7 @@ class WarrantyController extends Controller
     {
         $warranty = $this->loadWarrantyForDealer($warranty, $request);
 
-        $warranty->fill($request->only(['customer_name', 'customer_email']));
+        $warranty->fill($request->only(['customer_name', 'customer_email', 'license_plate_number']));
         $warranty->save();
 
         return redirect()->route('user.warranties.show', $warranty)->with('status', 'Data customer berhasil diperbarui.');
@@ -166,10 +173,10 @@ class WarrantyController extends Controller
         $item->status = WarrantyItemStatus::PendingClaim->value;
         $item->save();
 
-        if (!empty(env('RESEND_API_KEY'))) {
-            $admins = \App\Models\User::where('role', 'admin')->where('id', '!=', 1)->get();
+        if (! empty(env('RESEND_API_KEY'))) {
+            $admins = User::where('role', 'admin')->where('id', '!=', 1)->get();
             foreach ($admins as $admin) {
-                Mail::to($admin->email)->send(new \App\Mail\WarrantyClaimedAdminMail($item));
+                Mail::to($admin->email)->send(new WarrantyClaimedAdminMail($item));
             }
         }
 

@@ -16,6 +16,7 @@ class UpdateWarrantyRequest extends FormRequest
         return [
             'customer_name' => ['required', 'string', 'max:255'],
             'customer_email' => ['required', 'string', 'email', 'max:255'],
+            'license_plate_number' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

@@ -21,6 +21,7 @@ class StoreWarrantyRequest extends FormRequest
             'customer_email' => ['required', 'string', 'email', 'max:255'],
             'car_type' => ['required', 'string', 'max:255'],
             'engine_number' => ['required', 'string', 'max:255'],
+            'license_plate_number' => ['nullable', 'string', 'max:255'],
             'item_positions' => ['required', 'array', 'min:1'],
             'item_positions.*' => ['required', Rule::in(WarrantyItemPosition::values())],
             'product_ids' => ['nullable', 'array'],
