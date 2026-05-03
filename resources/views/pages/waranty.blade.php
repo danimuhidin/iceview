@@ -16,7 +16,7 @@
                 </div>
                 <div class="glass-card rounded-2xl p-6">
                     <h2 class="mb-2 text-lg font-semibold text-white">Validity</h2>
-                    <p class="text-sm text-slate-300">Masa waranty hingga 5 tahun untuk seri tertentu dengan pemasangan
+                    <p class="text-sm text-slate-300">Masa warranty hingga 5 tahun untuk seri tertentu dengan pemasangan
                         resmi.</p>
                 </div>
                 <div class="glass-card rounded-2xl p-6">

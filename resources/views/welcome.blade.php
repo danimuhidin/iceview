@@ -166,9 +166,9 @@
     <section id="waranty" class="px-4 pb-16 pt-14 sm:px-5 lg:px-8 lg:pb-24 lg:pt-20">
         <div
             class="mx-auto max-w-7xl rounded-3xl border border-slate-600/45 bg-gradient-to-r from-[#0c1426] via-[#0f172a] to-[#1e293b] p-6 sm:p-8 lg:p-12">
-            <h2 class="brand-font mb-3 text-3xl font-bold text-white">Waranty</h2>
+            <h2 class="brand-font mb-3 text-3xl font-bold text-white">Warranty</h2>
             <p class="mb-6 max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
-                Setiap pemasangan resmi mendapatkan perlindungan waranty sesuai ketentuan produk. Klaim lebih mudah melalui
+                Setiap pemasangan resmi mendapatkan perlindungan warranty sesuai ketentuan produk. Klaim lebih mudah melalui
                 dealer resmi dengan verifikasi nomor seri.
             </p>
             <div class="grid gap-4 sm:grid-cols-3">

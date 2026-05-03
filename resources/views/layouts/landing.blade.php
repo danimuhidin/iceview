@@ -138,7 +138,7 @@
                     <a href="{{ route('about') }}" class="transition hover:text-[#00F0FF]">About Us</a>
                     <a href="{{ route('products') }}" class="transition hover:text-[#00F0FF]">Products</a>
                     <a href="{{ route('dealers') }}" class="transition hover:text-[#00F0FF]">Dealers</a>
-                    <a href="{{ route('waranty') }}" class="transition hover:text-[#00F0FF]">Waranty</a>
+                    <a href="{{ route('waranty') }}" class="transition hover:text-[#00F0FF]">Warranty</a>
                 </nav>
 
                 <div class="hidden items-center gap-2 lg:flex">
