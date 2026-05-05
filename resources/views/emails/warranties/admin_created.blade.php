@@ -7,6 +7,5 @@ Sebuah garansi baru telah didaftarkan oleh dealer.
 **Tipe Mobil:** {{ $warranty->car_type }}
 **Nomor Polisi:** {{ $warranty->license_plate_number ?? '-' }}
 **Nomor Rangka:** {{ $warranty->engine_number }}
-Terima kasih,
-{{ config('app.name') }}
+
 </x-mail::message>

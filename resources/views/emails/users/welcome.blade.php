@@ -11,6 +11,5 @@ Berikut adalah detail login Anda:
         Kunjungi {{ config('app.name') }}
     </x-mail::button>
 
-Terima kasih,
-{{ config('app.name') }}
+
 </x-mail::message>

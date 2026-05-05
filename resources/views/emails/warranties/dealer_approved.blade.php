@@ -10,6 +10,5 @@ Sebuah klaim garansi telah disetujui.
         Lihat Detail
     </x-mail::button>
 
-Terima kasih,
-{{ config('app.name') }}
+
 </x-mail::message>

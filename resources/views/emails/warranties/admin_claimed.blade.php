@@ -10,6 +10,5 @@ Sebuah pengajuan klaim garansi baru telah diajukan oleh dealer.
         Tinjau Klaim
     </x-mail::button>
 
-Terima kasih,
-{{ config('app.name') }}
+
 </x-mail::message>

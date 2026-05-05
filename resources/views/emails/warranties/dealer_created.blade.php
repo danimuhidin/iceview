@@ -20,6 +20,5 @@ Garansi Tidak Berlaku dan Batal Apabila:
 
 **Catatan Penting:** Penggantian Klaim Kaca Film Di Atas 1 (Satu) Tahun Akan Dikenakan Biaya Pemasangan.
 
-Terima kasih,
-{{ config('app.name') }}
+
 </x-mail::message>
