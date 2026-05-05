@@ -69,6 +69,7 @@ class PublicPageController extends Controller
                             'Vlt' => '34%',
                             'IR Rejection' => '92%',
                             'UV Rejection' => '100%',
+                            'TSER' => '68%',
                         ],
                     ],
                     [
@@ -80,6 +81,7 @@ class PublicPageController extends Controller
                             'Vlt' => '15%',
                             'IR Rejection' => '92%',
                             'UV Rejection' => '100%',
+                            'TSER' => '62%',
                         ],
                     ],
                     [
@@ -91,6 +93,7 @@ class PublicPageController extends Controller
                             'Vlt' => '5%',
                             'IR Rejection' => '92%',
                             'UV Rejection' => '100%',
+                            'TSER' => '56%',
                         ],
                     ],
                 ],
@@ -110,6 +113,7 @@ class PublicPageController extends Controller
                             'Vlt' => '70%',
                             'IR Rejection' => '98%',
                             'UV Rejection' => '100%',
+                            'TSER' => '58%',
                         ],
                     ],
                 ],

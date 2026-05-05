@@ -18,20 +18,17 @@
         </x-slot:subcopy>
     @endisset
 
-    {{-- Footer --}}
-    <x-slot:footer>
-        <x-mail::footer>
-            @php
-                $siteInfo = \App\Models\SiteInfo::first();
-            @endphp
-            © {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved.') }}
-
-            @if ($siteInfo)
-                <br><br>
-                **Website:** [{{ config('app.url') }}]({{ config('app.url') }}) <br>
-                **Alamat Kantor:** {{ $siteInfo->address }} <br>
-                **Nomor Telepon:** {{ $siteInfo->phone }}
-            @endif
-        </x-mail::footer>
-    </x-slot:footer>
+<x-slot:footer>
+<x-mail::footer>
+@php
+$siteInfo = \App\Models\SiteInfo::first();
+@endphp
+@if ($siteInfo)
+{{ config('app.url') }}
+{{ $siteInfo->address }}
+{{ $siteInfo->phone }}
+@endif
+© {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved.') }}
+</x-mail::footer>
+</x-slot:footer>
 </x-mail::layout>
