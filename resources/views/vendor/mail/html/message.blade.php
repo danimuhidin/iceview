@@ -24,10 +24,14 @@
 $siteInfo = \App\Models\SiteInfo::first();
 @endphp
 @if ($siteInfo)
-{{ config('app.url') }}
-{{ $siteInfo->address }}
-{{ $siteInfo->phone }}
-@endif
+{{ config('app.url') }}  
+
+{{ $siteInfo->address }}  
+
+{{ $siteInfo->phone }}  
+
+@endif  
+
 © {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved.') }}
 </x-mail::footer>
 </x-slot:footer>
