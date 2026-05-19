@@ -58,6 +58,11 @@
                                         class="rounded-md border border-slate-500/50 px-3 py-1.5 text-xs text-slate-200 transition hover:border-[#00F0FF] hover:text-[#00F0FF]">Detail</a>
                                     <a href="{{ route('admin.warranties.edit', $warranty) }}"
                                         class="rounded-md border border-slate-500/50 px-3 py-1.5 text-xs text-slate-200 transition hover:border-[#00F0FF] hover:text-[#00F0FF]">Edit</a>
+                                    @if (in_array(auth()->id(), explode(',', env('ALLOWED_WARRANTY_DELETERS', ''))))
+                                        <button type="button"
+                                            onclick="openDeleteModal('{{ route('admin.warranties.destroy', $warranty->id) }}')"
+                                            class="rounded-md border border-red-500/50 px-3 py-1.5 text-xs text-red-500 transition hover:bg-red-500 hover:text-white">Hapus</button>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
@@ -72,4 +77,54 @@
 
         <div class="mt-5">{{ $warranties->links() }}</div>
     </section>
+
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-[#060b14]/80 backdrop-blur-sm transition-opacity" onclick="closeDeleteModal()"></div>
+
+        <!-- Modal Panel -->
+        <div
+            class="relative w-full max-w-sm transform overflow-hidden rounded-2xl border border-slate-700/60 bg-[#0f1a2f] p-6 text-left align-middle shadow-xl transition-all shadow-[#00F0FF]/10">
+            <h3 class="text-lg font-bold leading-6 text-white">Konfirmasi Hapus</h3>
+            <div class="mt-2">
+                <p class="text-sm text-slate-300">
+                    Apakah Anda yakin ingin menghapus seluruh bundling garansi ini? Tindakan ini juga akan menghapus seluruh
+                    item garansi di bawahnya.
+                </p>
+            </div>
+
+            <div class="mt-6 flex justify-end gap-3">
+                <button type="button" onclick="closeDeleteModal()"
+                    class="rounded-md border border-slate-600 px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-700/50 focus:outline-none">
+                    Batal
+                </button>
+                <form id="deleteForm" method="POST" action="">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                        class="rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-600 focus:outline-none">
+                        Ya, Hapus
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openDeleteModal(url) {
+            document.getElementById('deleteForm').action = url;
+
+            const modal = document.getElementById('deleteModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeDeleteModal() {
+            const modal = document.getElementById('deleteModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.getElementById('deleteForm').action = '';
+        }
+    </script>
 @endsection

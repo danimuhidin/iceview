@@ -48,7 +48,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'admin'])->prefix('admin')->as('admin.')->group(function () {
     Route::resource('products', ProductController::class)->only(['index', 'store', 'update', 'destroy']);
     Route::get('warranties/claims', [AdminWarrantyController::class, 'claimsIndex'])->name('claims.index');
-    Route::resource('warranties', AdminWarrantyController::class)->only(['index', 'show', 'edit', 'update']);
+    Route::resource('warranties', AdminWarrantyController::class)->only(['index', 'show', 'edit', 'update', 'destroy']);
+    Route::delete('warranties/items/{item}', [AdminWarrantyController::class, 'destroyItem'])->name('warranties.items.destroy');
     Route::post('warranties/claims/{item_id}/approve', [AdminWarrantyController::class, 'approveClaim'])->name('warranties.claims.approve');
 });
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\WarrantyItemStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateWarrantyRequest;
+use App\Mail\WarrantyClaimApprovedCustomerMail;
+use App\Mail\WarrantyClaimApprovedDealerMail;
 use App\Models\Warranty;
 use App\Models\WarrantyItem;
 use Illuminate\Http\RedirectResponse;
@@ -63,6 +65,38 @@ class WarrantyController extends Controller
         return redirect()->route('admin.warranties.show', $warranty)->with('status', 'Garansi berhasil diperbarui.');
     }
 
+    public function destroy(Warranty $warranty): RedirectResponse
+    {
+        $allowedDeleters = explode(',', env('ALLOWED_WARRANTY_DELETERS', ''));
+        if (! in_array((string) auth()->id(), $allowedDeleters)) {
+            abort(403, 'Anda tidak memiliki akses untuk menghapus garansi ini.');
+        }
+
+        $warranty->delete();
+
+        return redirect()->route('admin.warranties.index')->with('status', 'Data bundling garansi beserta detailnya berhasil dihapus.');
+    }
+
+    public function destroyItem(WarrantyItem $item): RedirectResponse
+    {
+        $allowedDeleters = explode(',', env('ALLOWED_WARRANTY_DELETERS', ''));
+        if (! in_array((string) auth()->id(), $allowedDeleters)) {
+            abort(403, 'Anda tidak memiliki akses untuk menghapus item garansi ini.');
+        }
+
+        $warranty_id = $item->warranty_id;
+        $item->delete();
+
+        // Optional: Jika ingin menghapus bundling juga bila item sudah kosong
+        if (WarrantyItem::where('warranty_id', $warranty_id)->count() === 0) {
+            Warranty::find($warranty_id)?->delete();
+
+            return redirect()->route('admin.warranties.index')->with('status', 'Item garansi dan bundling garansi (karena kosong) berhasil dihapus.');
+        }
+
+        return back()->with('status', 'Item garansi berhasil dihapus.');
+    }
+
     public function claimsIndex(Request $request): View
     {
         return view('admin.claims.index', [
@@ -86,15 +120,15 @@ class WarrantyController extends Controller
         $item->status = WarrantyItemStatus::Claimed->value;
         $item->save();
 
-        if (!empty(env('RESEND_API_KEY'))) {
+        if (! empty(env('RESEND_API_KEY'))) {
             // To Dealer
             if ($item->warranty->dealer && $item->warranty->dealer->email) {
-                Mail::to($item->warranty->dealer->email)->send(new \App\Mail\WarrantyClaimApprovedDealerMail($item));
+                Mail::to($item->warranty->dealer->email)->send(new WarrantyClaimApprovedDealerMail($item));
             }
 
             // To Customer
             if ($item->warranty->customer_email) {
-                Mail::to($item->warranty->customer_email)->send(new \App\Mail\WarrantyClaimApprovedCustomerMail($item));
+                Mail::to($item->warranty->customer_email)->send(new WarrantyClaimApprovedCustomerMail($item));
             }
         }
 
